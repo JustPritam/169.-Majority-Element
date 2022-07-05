@@ -1,0 +1,37 @@
+class Solution
+{
+    static int majorityElement(int a[], int size)
+    {
+       int ind = major( a, size);
+       if(is_major( a, size, ind) == -1)
+       return -1;
+       else
+       return a[ind];
+    }
+    static int is_major(int a[], int size, int index){
+        int count = 0;
+        for(int i = 0; i < size; i++){
+            if( a[i] == a[index] )
+            count++;
+        }
+        if( count > size/2 )
+        return 1;
+        else 
+        return -1;
+    }
+    static int major( int a[], int size){
+        int index = 0;
+        int count = 0;
+        for(int i = 0; i < size; i++ ){
+            if(a[i] == a[index])
+                count++;
+            else
+                count--;
+            if( count == 0 ){
+                index = i;
+                count = 1;
+            }
+        }
+        return index;
+    }
+}
